@@ -52,3 +52,20 @@ module.exports = multer({
   },
 });
 ```
+
+### Utilização
+
+Agora é so fazermos a utilização desse middleware no arquivo principal.
+
+```javascript
+const upload = require("./middlewares/upload.js");
+
+app.post("/upload-image", upload.single("image"), async (req, res) => {
+  if (req.file) {
+    return res.json({
+      erro: false,
+      mensagem: "Upload realizado com sucesso!",
+    });
+  }
+});
+```
